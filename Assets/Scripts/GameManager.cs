@@ -38,9 +38,10 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
-    public void UpdateScore(int score)
+    public void UpdateScore(int s)
     {
-        this.score = this.score + score;
+        score += s;
+        scoreText.text = "Score: " + score;
     }
 
     void StartGame()
