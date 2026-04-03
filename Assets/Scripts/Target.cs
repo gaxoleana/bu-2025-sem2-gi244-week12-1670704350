@@ -48,6 +48,9 @@ public class Target : MonoBehaviour, IPointerClickHandler
     {
         Debug.Log("Clicked");
         Destroy(this.gameObject);
+
+        var gm = FindAnyObjectByType<GameManager>();
+        gm.UpdateScore(point);
     }
 
     private void OnTriggerEnter(Collider other)

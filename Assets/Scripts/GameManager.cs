@@ -34,7 +34,13 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        scoreText.text = "Score: " + score;
         StartGame();
+    }
+
+    public void UpdateScore(int score)
+    {
+        this.score = this.score + score;
     }
 
     void StartGame()
