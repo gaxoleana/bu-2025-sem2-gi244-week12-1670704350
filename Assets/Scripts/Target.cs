@@ -20,6 +20,12 @@ public class Target : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        //rb.AddForce(Vector3.up * Random.value * 100, ForceMode.Impulse);
+        rb.AddForce(RandomForce(), ForceMode.Impulse);
+        //rb.AddTorque(10, 20, 30);
+        rb.AddTorque(RandomTorque(), RandomTorque(), RandomTorque());
+        //transform.position = new Vector3(Random.Range(-4, 4), -6 ,0);
+        transform.position = RandomSpawnPos();
     }
 
     Vector3 RandomForce()
@@ -40,11 +46,15 @@ public class Target : MonoBehaviour, IPointerClickHandler
     // NOTE: OnPointerClick is part of IPointerClickHandler interface
     public void OnPointerClick(PointerEventData eventData)
     {
-
+        Debug.Log("Clicked");
+        Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-
+        if (other.CompareTag("Sensor"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

@@ -44,7 +44,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnTargets()
     {
-        yield return null;
+        while (true)
+        {
+            int idx = Random.Range(0, targets.Count);
+            var prefab = targets[idx];
+            Instantiate(prefab);
+
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 }
 
